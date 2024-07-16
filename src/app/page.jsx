@@ -28,7 +28,7 @@ const Home = () => {
           src='/DALL·E.png'
           alt=''
           fill
-          objectFit='contain'
+          sizes='100vw, 33vw'
           className={styles.heroImg}
         />
       </div>

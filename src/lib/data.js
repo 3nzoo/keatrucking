@@ -26,6 +26,19 @@ export const getPosts = async () => {
   }
 };
 
+
+export const getBranchPosts = async (id) => {
+  try {
+    connectToDb();
+    const posts = await Post.find({ userId: id, status: { $ne: 'canceled' } });
+    return posts;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
+
+
 export const getPost = async (slug) => {
   try {
     connectToDb();
@@ -52,7 +65,7 @@ export const getUser = async (id) => {
 export const getUsers = async () => {
   try {
     connectToDb();
-    const users = await User.find();
+    const users = await User.find({ isAdmin: false }).select('-password');
     return users;
   } catch (err) {
     console.log(err);

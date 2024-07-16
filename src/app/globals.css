@@ -33,6 +33,12 @@ a {
   justify-content: space-between;
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1536px) {
   .container {
     width: 1366px;

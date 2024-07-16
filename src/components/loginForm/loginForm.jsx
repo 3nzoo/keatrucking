@@ -11,6 +11,7 @@ const LoginForm = () => {
 
   return (
     <form className={styles.form} action={formAction}>
+      <h1> Login Account</h1>
       <input type='text' placeholder='username' name='username' />
       <input type='password' placeholder='password' name='password' />
       <button>Login</button>

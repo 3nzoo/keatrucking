@@ -9,7 +9,12 @@ const userSchema = new mongoose.Schema(
       min: 3,
       max: 20,
     },
-    email: {
+    name: {
+      type: String,
+      required: true,
+      max: 50,
+    },
+    branchName: {
       type: String,
       required: true,
       unique: true,
@@ -18,24 +23,52 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
     },
+    contact: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
     img: {
       type: String,
+    },
+    incorporate: {
+      type: String,
+      required: true,
     },
     isAdmin: {
       type: Boolean,
       default: false,
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true }
 );
 
+// ? truck number, userId, item_category, name ,address
+// ? contact, status, lastUpdate, image_link, slug
+
 const postSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    desc: {
+    address: {
+      type: String,
+      required: true,
+    },
+    contact: {
+      type: String,
+      required: true,
+    },
+    truck_number: {
+      type: String,
+    },
+    item_category: {
       type: String,
       required: true,
     },
@@ -45,6 +78,10 @@ const postSchema = new mongoose.Schema(
     userId: {
       type: String,
       required: true,
+    },
+    status: {
+      type: String,
+      default: 'New',
     },
     slug: {
       type: String,

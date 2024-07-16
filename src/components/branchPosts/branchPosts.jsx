@@ -1,12 +1,11 @@
-import { getPosts } from '@/lib/data';
-import styles from './adminPosts.module.css';
-import Image from 'next/image';
+import { getBranchPosts } from '@/lib/data';
+import styles from './branchPosts.module.css';
+
 import { deletePost } from '@/lib/action';
 import Link from 'next/link';
 
-const AdminPosts = async () => {
-  const posts = await getPosts();
-
+const BranchPosts = async ({ branchId }) => {
+  const posts = await getBranchPosts(branchId);
   return (
     <div className={styles.container}>
       <h1>Deliveries</h1>
@@ -14,32 +13,33 @@ const AdminPosts = async () => {
       <table className={styles.tableContainer}>
         <thead>
           <tr>
+            <th>Select</th>
             <th>Name</th>
             <th>Address</th>
             <th>Contact</th>
             <th>Item Category</th>
             <th>Status</th>
+            <th>Delete</th>
             <th>Truck Number</th>
-            <th>Branch</th>
           </tr>
         </thead>
         <tbody>
           {posts?.map((post) => {
-            // const curDate = new Date(user.createdAt);
             return (
               <tr key={post.id}>
+                <td>
+                  <Link href={`/deliveries/${post.slug}`}>View Details</Link>
+                </td>
                 <td>{post.name}</td>
                 <td>{post.address}</td>
                 <td>{post.contact}</td>
                 <td>{post.item_category}</td>
                 <td>{post.status}</td>
                 <td>
-                  <Link
-                    className={styles.LinkBtn}
-                    href={`/deliveries/${post.slug}`}
-                  >
-                    View Details
-                  </Link>
+                  <form action={deletePost}>
+                    <input type='hidden' name='id' value={post.id} />
+                    <button className={styles.postButton}>Cancel</button>
+                  </form>
                 </td>
               </tr>
             );
@@ -68,4 +68,4 @@ const AdminPosts = async () => {
   );
 };
 
-export default AdminPosts;
+export default BranchPosts;

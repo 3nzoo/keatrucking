@@ -1,25 +1,38 @@
-"use client";
+'use client';
 
-import { addUser } from "@/lib/action";
-import styles from "./adminUserForm.module.css";
-import { useFormState } from "react-dom";
+import { addUser } from '@/lib/action';
+import styles from './adminUserForm.module.css';
+import { useFormState } from 'react-dom';
+import { useRouter } from 'next/navigation';
 
 const AdminUserForm = () => {
   const [state, formAction] = useFormState(addUser, undefined);
+  const router = useRouter();
+
+  if (state?.success) {
+    setTimeout(() => {
+      router.replace('/'); // Redirect to the home page or any other route
+      // router.push('/');
+    }, 1500);
+  }
 
   return (
     <form action={formAction} className={styles.container}>
-      <h1>Add New User</h1>
-      <input type="text" name="username" placeholder="username" />
-      <input type="text" name="email" placeholder="email" />
-      <input type="password" name="password" placeholder="password" />
-      <input type="text" name="img" placeholder="img" />
-      <select name="isAdmin">
-        <option value="false">Is Admin?</option>
-        <option value="false">No</option>
-        <option value="true">Yes</option>
-      </select>
-      <button>Add</button>
+      <h1>Add New Branch</h1>
+      <input type='text' name='username' placeholder='Username' />
+      <input type='text' name='name' placeholder='Contact Person' />
+      <input type='password' name='password' placeholder='Password' />
+      <input type='text' name='city' placeholder='City' />
+      <input type='text' name='contact' placeholder='Contact Number' />
+      <input type='text' name='incorporate' placeholder='Incorporate Company' />
+      {/* <input type='text' name='img' placeholder='img' /> */}
+      {/* <select name='isAdmin'>
+        <option value='false'>Is Admin?</option>
+        <option value='false'>No</option>
+        <option value='true'>Yes</option>
+      </select> */}
+      <button>Add Branch </button>
+      {state?.success && <h2>Branch Added</h2>}
       {state?.error}
     </form>
   );

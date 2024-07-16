@@ -8,6 +8,11 @@
   padding: 10px;
   cursor: pointer;
   font-weight: bold;
+  background: #bcbcbc;
+}
+
+.logout:hover {
+  background: white;
 }
 
 .menuButton,

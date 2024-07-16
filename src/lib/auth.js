@@ -48,14 +48,12 @@ export const {
   callbacks: {
     async signIn({ user, account, profile }) {
 
-      console.log(11111, user)
+      console.log(11111, user);
 
       console.log('-----------------------------')
 
       console.log(222222, account);
       console.log('-----------------------------')
-
-      console.log(333333, profile);
 
       // ! add feature to check if user.active === true else return false
 

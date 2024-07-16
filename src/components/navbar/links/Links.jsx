@@ -15,30 +15,53 @@ const links = [
     title: 'Contact',
     path: '/contact',
   },
+];
+
+const linksAdmin = [
+  {
+    title: 'Home',
+    path: '/admin',
+  },
   {
     title: 'Deliveries',
     path: '/deliveries',
+  },
+  {
+    title: 'Contact',
+    path: '/contact',
+  },
+];
+
+const linksBranch = [
+  {
+    title: 'Home',
+    path: '/branch',
+  },
+  {
+    title: 'Contact',
+    path: '/contact',
   },
 ];
 
 const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
 
+  const finalLinks = !session
+    ? links
+    : session?.user?.isAdmin
+    ? linksAdmin
+    : linksBranch;
   // TEMPORARY
   // const session = true;
   // const isAdmin = true;
-
   return (
     <div className={styles.container}>
       <div className={styles.links}>
-        {links.map((link) => (
+        {finalLinks.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
         {session?.user ? (
           <>
-            {session.user?.isAdmin && (
-              <NavLink item={{ title: 'Admin', path: '/admin' }} />
-            )}
             <form action={handleLogout}>
               <button className={styles.logout}>Logout</button>
             </form>
@@ -47,6 +70,7 @@ const Links = ({ session }) => {
           <NavLink item={{ title: 'Login', path: '/login' }} />
         )}
       </div>
+
       <Image
         className={styles.menuButton}
         src='/menu.png'
@@ -57,9 +81,18 @@ const Links = ({ session }) => {
       />
       {open && (
         <div className={styles.mobileLinks}>
-          {links.map((link) => (
+          {finalLinks.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
+          {session?.user ? (
+            <>
+              <form action={handleLogout}>
+                <button className={styles.logout}>Logout</button>
+              </form>
+            </>
+          ) : (
+            <NavLink item={{ title: 'Login', path: '/login' }} />
+          )}
         </div>
       )}
     </div>

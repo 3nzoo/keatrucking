@@ -1,36 +1,41 @@
-import { Suspense } from "react";
-import styles from "./admin.module.css";
-import AdminPosts from "@/components/adminPosts/adminPosts";
-import AdminPostForm from "@/components/adminPostForm/adminPostForm";
-import AdminUsers from "@/components/adminUsers/adminUsers";
-import AdminUserForm from "@/components/adminUserForm/adminUserForm";
-import { auth } from "@/lib/auth";
+import { Suspense } from 'react';
+import styles from './admin.module.css';
+import AdminPosts from '@/components/adminPosts/adminPosts';
+import AdminPostForm from '@/components/adminPostForm/adminPostForm';
+import AdminUsers from '@/components/adminUsers/adminUsers';
+import AdminUserForm from '@/components/adminUserForm/adminUserForm';
+import { auth } from '@/lib/auth';
+import Loading from '../loading';
+import Link from 'next/link';
 
 const AdminPage = async () => {
-
   const session = await auth();
 
   return (
     <div className={styles.container}>
+      <h2>
+        Hi <strong>{session?.user?.username.toUpperCase()}</strong>
+      </h2>
       <div className={styles.row}>
         <div className={styles.col}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loading />}>
             <AdminPosts />
           </Suspense>
         </div>
-        <div className={styles.col}>
-          <AdminPostForm userId = {session.user.id} />
-        </div>
+        {/* <div className={styles.col}>
+          <AdminPostForm userId={session.user.id} />
+        </div> */}
       </div>
       <div className={styles.row}>
         <div className={styles.col}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Link href={'/admin/branch/new'}>add Branch</Link>
+          <Suspense fallback={<Loading />}>
             <AdminUsers />
           </Suspense>
         </div>
-        <div className={styles.col}>
+        {/* <div className={styles.col}>
           <AdminUserForm />
-        </div>
+        </div> */}
       </div>
     </div>
   );

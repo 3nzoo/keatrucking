@@ -1,15 +1,16 @@
-import Image from "next/image";
-import styles from "./singlePost.module.css";
-import PostUser from "@/components/postUser/postUser";
-import { Suspense } from "react";
-import { getPost } from "@/lib/data";
+import Image from 'next/image';
+import styles from './singlePost.module.css';
+import PostUser from '@/components/postUser/postUser';
+import { Suspense } from 'react';
+import { getPost } from '@/lib/data';
+import Loading from '@/app/loading';
 
 // FETCH DATA WITH AN API
 const getData = async (slug) => {
   const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
 
   if (!res.ok) {
-    throw new Error("Something went wrong");
+    throw new Error('Something went wrong');
   }
 
   return res.json();
@@ -39,14 +40,14 @@ const SinglePostPage = async ({ params }) => {
     <div className={styles.container}>
       {post.img && (
         <div className={styles.imgContainer}>
-          <Image src={post.img} alt="" fill className={styles.img} />
+          <Image src={post.img} alt='' fill className={styles.img} />
         </div>
       )}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
           {post && (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <PostUser userId={post.userId} />
             </Suspense>
           )}

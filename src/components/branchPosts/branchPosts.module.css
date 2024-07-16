@@ -42,10 +42,10 @@
 }
 
 .tableContainer a {
-  background: white;
   color: gray;
   border-radius: 20px;
   padding: 10px;
+  background: white;
 }
 
 .tableContainer a:hover {

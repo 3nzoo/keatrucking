@@ -1,8 +1,15 @@
 .container {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 100px;
+  min-height: 70vh;
+}
+
+.containerHead {
+  display: flex;
+
+  justify-content: space-between;
+  width: 100%;
 }
 
 .row {
@@ -15,7 +22,7 @@
   font-weight: 300;
 }
 
-.row a {
+.containerHead a {
   background: var(--btn);
   float: right;
   margin-right: 20px;
