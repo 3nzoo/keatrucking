@@ -9,9 +9,9 @@ module.exports = {
       host: '18.136.101.181',
       ref: 'origin/main',
       repo: 'git@github.com:3nzoo/keatrucking.git',
-      path: "/home/ubuntu/source",
-      'pre-deploy': 'source ~/.nvm/nvm.sh && nvm install && nvm use',
-      'post-deploy': 'source ~/.nvm/nvm.sh npm install && npm run build && pm2 reload ecosystem.config.js --env production',
+      path: '/home/ubuntu',
+      'pre-deploy-local': '',
+      'post-deploy': 'source ~/.nvm/nvm.sh && npm install && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': '',
       'ssh-options': 'ForwardAgent=yes'
     }
