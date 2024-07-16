@@ -3,14 +3,11 @@
 import { addPost } from '@/lib/action';
 import styles from './adminPostForm.module.css';
 import { useFormState } from 'react-dom';
+import { useRouter } from 'next/navigation';
 
-// ?truck number, userId, item_category, name ,address
-// ? contact_number, status, lastUpdate, image_link
-
-//! add username
 const AdminPostForm = ({ userId, branchName }) => {
   const [state, formAction] = useFormState(addPost, undefined);
-
+  const router = useRouter();
   const now = new Date();
 
   // Extract and format each part of the date and time
@@ -24,6 +21,13 @@ const AdminPostForm = ({ userId, branchName }) => {
   // Combine all parts into a single string
   const formattedDateTime = `${day}${month}${year}${hours}${minutes}${seconds}`;
 
+  if (state?.success) {
+    setTimeout(() => {
+      router.replace('/'); // Redirect to the home page or any other route
+      // router.push('/');
+    }, 1500);
+  }
+
   return (
     <form action={formAction} className={styles.container}>
       <h1>Add New Delivery</h1>
@@ -34,6 +38,7 @@ const AdminPostForm = ({ userId, branchName }) => {
       <input type='text' name='contact' placeholder='Contact' />
       <input type='text' name='item_category' placeholder='Category' />
       <button>Add</button>
+      {state?.success && <h2>New Delivery Added</h2>}
       {state?.error}
     </form>
   );

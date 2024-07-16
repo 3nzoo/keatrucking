@@ -32,7 +32,6 @@ export const addPost = async (prevState, formData) => {
     console.log("saved post to db");
     revalidatePath("/deliveries");
     revalidatePath("/admin");
-    window.location.href = '/'
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
