@@ -26,10 +26,12 @@ export const authConfig = {
     authorized({ auth, request }) {
       const user = auth?.user;
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
-      const isOnDeliveries = request.nextUrl?.pathname.startsWith("/deliveries");
+      const isOnDeliveries = request.nextUrl?.pathname.startsWith("/delivery");
+      const isOnAdminDeliveries = request.nextUrl?.pathname.startsWith("/deliveries");
       const isOnBranch = request.nextUrl?.pathname.startsWith("/branch");
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
       const isOnHomePage = request.nextUrl?.pathname === "/";
+      const slug = request.nextUrl?.pathname.split('/').pop().split('FC-')[0];
 
 
       if (isOnHomePage && user) {
@@ -49,6 +51,18 @@ export const authConfig = {
       if (isOnDeliveries && !user) {
         return false;
       }
+
+
+      if (isOnDeliveries && user) {
+        if (!user?.isAdmin && slug !== user?.username) {
+          return false;
+        }
+      }
+
+      if (isOnAdminDeliveries && !user?.isAdmin) {
+        return false
+      }
+
 
       if (isOnBranch && !user) {
         return false;

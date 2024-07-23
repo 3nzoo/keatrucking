@@ -8,17 +8,23 @@ import { unstable_noStore as noStore } from "next/cache";
 //   { id: 2, name: "Jane" },
 // ];
 
-// const posts = [
-//   { id: 1, title: "Post 1", body: "......", userId: 1 },
-//   { id: 2, title: "Post 2", body: "......", userId: 1 },
-//   { id: 3, title: "Post 3", body: "......", userId: 2 },
-//   { id: 4, title: "Post 4", body: "......", userId: 2 },
-// ];
 
 export const getPosts = async () => {
   try {
     connectToDb();
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });
+    return posts;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
+
+//? List down all posts
+export const getUserPosts = async () => {
+  try {
+    connectToDb();
+    const posts = await Post.find().sort({ createdAt: -1 });
     return posts;
   } catch (err) {
     console.log(err);
@@ -27,11 +33,25 @@ export const getPosts = async () => {
 };
 
 
-export const getBranchPosts = async (id) => {
+
+//? List down Posts from a Branch/User
+export const getBranchPosts = async (username) => {
   try {
     connectToDb();
-    const posts = await Post.find({ userId: id, status: { $ne: 'canceled' } });
+    const posts = await Post.find({ username: username, status: { $ne: 'canceled' } }).sort({ createdAt: -1 });
     return posts;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch posts!");
+  }
+};
+
+export const getPostBySlug = async (slug) => {
+  noStore();
+  try {
+    const post = await Post.findOne({ slug: slug });
+    return post;
+    return 'Happy together'
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch posts!");
@@ -42,7 +62,7 @@ export const getBranchPosts = async (id) => {
 export const getPost = async (slug) => {
   try {
     connectToDb();
-    const post = await Post.findOne({ slug });
+    const post = await Post.findOne(slug).sort({ createdAt: -1 });
     return post;
   } catch (err) {
     console.log(err);
@@ -55,6 +75,18 @@ export const getUser = async (id) => {
   try {
     connectToDb();
     const user = await User.findById(id);
+    return user;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch user!");
+  }
+};
+
+export const getUserBySlug = async (username) => {
+  noStore();
+  try {
+    connectToDb();
+    const user = await User.findOne({ username }).select('-password -__v -createdAt -isAdmin');
     return user;
   } catch (err) {
     console.log(err);

@@ -11,10 +11,10 @@ export const addPost = async (prevState, formData) => {
   // const desc = formData.get("desc");
   // const slug = formData.get("slug");
 
-  // ?truck number, userId, item_category, name ,address
+  // ?truck number, username, item_category, name ,address
   // ? contact, status, lastUpdate, image_link
 
-  const { name, address, slug, userId, contact, item_category, } = Object.fromEntries(formData);
+  const { name, address, slug, username, contact, item_category, } = Object.fromEntries(formData);
 
   try {
     connectToDb();
@@ -23,14 +23,14 @@ export const addPost = async (prevState, formData) => {
       name,
       address,
       slug,
-      userId,
+      username,
       contact,
       item_category
     });
 
     await newPost.save();
     console.log("saved post to db");
-    revalidatePath("/deliveries");
+    revalidatePath("/delivery");
     revalidatePath("/admin");
   } catch (err) {
     console.log(err);
@@ -114,42 +114,7 @@ export const handleLogout = async () => {
   await signOut();
 };
 
-// export const register = async (previousState, formData) => {
-//   const { username, email, password, img, passwordRepeat } =
-//     Object.fromEntries(formData);
 
-//   if (password !== passwordRepeat) {
-//     return { error: "Passwords do not match" };
-//   }
-
-//   try {
-//     connectToDb();
-
-//     const user = await User.findOne({ username });
-
-//     if (user) {
-//       return { error: "Username already exists" };
-//     }
-
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-
-//     const newUser = new User({
-//       username,
-//       email,
-//       password: hashedPassword,
-//       img,
-//     });
-
-//     await newUser.save();
-//     console.log("saved to db");
-
-//     return { success: true };
-//   } catch (err) {
-//     console.log(err);
-//     return { error: "Something went wrong!" };
-//   }
-// };
 
 export const login = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData);
@@ -157,11 +122,16 @@ export const login = async (prevState, formData) => {
   try {
     await signIn("credentials", { username, password });
   } catch (err) {
-    console.log(err);
 
+    if (err.message.includes("AccessDenied")) {
+      return { error: "Invalid username or password" };
+    }
+    // return { error: "Invalid username or password" };
     if (err.message.includes("CredentialsSignin")) {
       return { error: "Invalid username or password" };
     }
+
     throw err;
+
   }
 };

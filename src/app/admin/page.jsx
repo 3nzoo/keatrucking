@@ -14,7 +14,7 @@ const AdminPage = async () => {
   return (
     <div className={styles.container}>
       <h2>
-        Hi <strong>{session?.user?.username.toUpperCase()}</strong>
+        Hi <strong>{session?.user?.username?.toUpperCase()}</strong>
       </h2>
       <div className={styles.row}>
         <div className={styles.col}>
@@ -22,13 +22,15 @@ const AdminPage = async () => {
             <AdminPosts />
           </Suspense>
         </div>
-        {/* <div className={styles.col}>
-          <AdminPostForm userId={session.user.id} />
-        </div> */}
       </div>
+
       <div className={styles.row}>
-        <div className={styles.col}>
+        <div className={styles.colHeader}>
           <Link href={'/admin/branch/new'}>add Branch</Link>
+        </div>
+        {/* <Link href={'/admin/branch/new'}>add Branch</Link> */}
+        <div className={styles.col}>
+          {/* <Link href={'/admin/branch/new'}>add Branch</Link> */}
           <Suspense fallback={<Loading />}>
             <AdminUsers />
           </Suspense>

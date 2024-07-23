@@ -14,9 +14,10 @@ const AdminPosts = async () => {
       <table className={styles.tableContainer}>
         <thead>
           <tr>
+            <th>Action</th>
             <th>Name</th>
             <th>Address</th>
-            <th>Contact</th>
+            <th>Contact Number</th>
             <th>Item Category</th>
             <th>Status</th>
             <th>Truck Number</th>
@@ -28,19 +29,21 @@ const AdminPosts = async () => {
             // const curDate = new Date(user.createdAt);
             return (
               <tr key={post.id}>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/delivery/${post.slug}`}
+                  >
+                    View Details
+                  </Link>
+                </td>
                 <td>{post.name}</td>
                 <td>{post.address}</td>
                 <td>{post.contact}</td>
                 <td>{post.item_category}</td>
                 <td>{post.status}</td>
-                <td>
-                  <Link
-                    className={styles.LinkBtn}
-                    href={`/deliveries/${post.slug}`}
-                  >
-                    View Details
-                  </Link>
-                </td>
+                <td>-</td>
+                <td>{post.username}</td>
               </tr>
             );
           })}

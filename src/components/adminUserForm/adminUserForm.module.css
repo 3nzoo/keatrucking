@@ -12,6 +12,7 @@
   border: none;
   border-radius: 5px;
   color: gray;
+  font-size: 16px;
 }
 
 .container input:focus {
@@ -26,4 +27,39 @@
   border-radius: 5px;
   color: var(--textColor);
   font-weight: bold;
+}
+
+.container .close {
+  background: #e7e7e7;
+  color: gray;
+}
+
+.container .close:hover {
+  background: #ff5733;
+  color: white;
+}
+
+.container .add {
+  margin-top: 30px;
+}
+
+.container .add:hover {
+  background: #6495ed;
+}
+
+.header .back {
+  background: #e7e7e7;
+  color: gray;
+  float: right;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.header .back:hover {
+  background: #ff5733;
+  color: white;
+}
+
+.header {
+  margin-bottom: 30px;
 }

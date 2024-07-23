@@ -16,8 +16,17 @@ const AdminUserForm = () => {
     }, 1500);
   }
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <form action={formAction} className={styles.container}>
+      <div className={styles.header}>
+        <button className={styles.back} onClick={handleBack}>
+          BACK
+        </button>
+      </div>
       <h1>Add New Branch</h1>
       <input type='text' name='username' placeholder='Username' />
       <input type='text' name='name' placeholder='Contact Person' />
@@ -31,7 +40,10 @@ const AdminUserForm = () => {
         <option value='false'>No</option>
         <option value='true'>Yes</option>
       </select> */}
-      <button>Add Branch </button>
+      <button className={styles.add}>Add Branch </button>
+      <button className={styles.close} onClick={handleBack}>
+        Cancel
+      </button>
       {state?.success && <h2>Branch Added</h2>}
       {state?.error}
     </form>

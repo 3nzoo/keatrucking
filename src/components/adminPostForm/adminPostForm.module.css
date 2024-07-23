@@ -12,6 +12,7 @@
   border: none;
   border-radius: 5px;
   color: gray;
+  font-size: 16px;
 }
 
 .container input:focus {

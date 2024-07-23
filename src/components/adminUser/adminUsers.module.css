@@ -1,0 +1,54 @@
+.user {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userButton {
+  padding: 5px 10px;
+  background-color: rgba(220, 20, 60, 0.593);
+  color: var(--textColor);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+
+.tableContainer {
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.tableContainer tr {
+  height: 55px;
+}
+
+.tableContainer td {
+  padding: 10px;
+}
+
+.tableContainer a {
+  background: white;
+  color: gray;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.tableContainer a:hover {
+  background: #d0d2d6;
+}

@@ -14,19 +14,16 @@ const BranchPage = async () => {
     <div className={styles.container}>
       <div className={styles.containerHead}>
         <h2>
-          Hi <strong>{session?.user?.username.toUpperCase()}</strong>
+          Hi <strong>{session?.user?.username?.toUpperCase()}</strong>
         </h2>
         <Link href={'/branch/newDelivery'}>new Delivery</Link>
       </div>
       <div className={styles.row}>
         <div className={styles.col}>
           <Suspense fallback={<Loading />}>
-            <BranchPosts branchId={session?.user?.id} />
+            <BranchPosts branchId={session?.user?.username} />
           </Suspense>
         </div>
-        {/* <div className={styles.col}>
-          <AdminPostForm userId={session.user.id} />
-        </div> */}
       </div>
     </div>
   );

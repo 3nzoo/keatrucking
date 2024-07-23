@@ -28,7 +28,7 @@ const BranchPosts = async ({ branchId }) => {
             return (
               <tr key={post.id}>
                 <td>
-                  <Link href={`/deliveries/${post.slug}`}>View Details</Link>
+                  <Link href={`/delivery/${post.slug}`}>View Details</Link>
                 </td>
                 <td>{post.name}</td>
                 <td>{post.address}</td>

@@ -20,8 +20,8 @@ const AdminUsers = async () => {
             <th>name</th>
             <th>City</th>
             <th>Contact</th>
-            <th>Action</th>
             <th>Company</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -33,38 +33,20 @@ const AdminUsers = async () => {
                 <td>{user.name}</td>
                 <td>{user.city}</td>
                 <td>{user.contact}</td>
+                <td>{user.incorporate}</td>
                 <td>
                   <Link
                     className={styles.LinkBtn}
-                    href={`/branch/${user.username}`}
+                    href={`/admin/branch/${user.username}`}
                   >
                     View Branch
                   </Link>
                 </td>
-                <td>{user.incorporate}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
-
-      {/* {users.map((user) => (
-        <div
-          className={styles.user}
-          onClick={handleRowClick(user.id)}
-          key={user.id}
-        >
-          <div className={styles.detail}>
-            <span>{user.username}</span>
-            <span>{user.username}</span>
-            <span>{user.username}</span>
-          </div>
-          <form action={deleteUser}>
-            <input type='hidden' name='id' value={user.id} />
-            <button className={styles.userButton}>Delete</button>
-          </form>
-        </div>
-      ))} */}
     </div>
   );
 };

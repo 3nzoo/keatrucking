@@ -8,7 +8,6 @@ import { Italiana } from 'next/font/google';
 
 const LoginForm = () => {
   const [state, formAction] = useFormState(login, undefined);
-
   return (
     <form className={styles.form} action={formAction}>
       <h1> Login Account</h1>

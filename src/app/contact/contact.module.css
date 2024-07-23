@@ -32,6 +32,7 @@
   outline: none;
   background-color: var(--bgSoft);
   color: var(--text);
+  font-size: 16px;
 }
 
 .form button {

@@ -75,7 +75,10 @@ const postSchema = new mongoose.Schema(
     img: {
       type: String,
     },
-    userId: {
+    remarks: {
+      type: String,
+    },
+    username: {
       type: String,
       required: true,
     },

@@ -10,10 +10,7 @@ const BranchNewDelivery = async () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Suspense fallback={<Loading />}>
-          <AdminPostForm
-            userId={session.user.id}
-            branchName={session.user.username}
-          />
+          <AdminPostForm branchName={session.user.username} />
         </Suspense>
       </div>
     </div>
