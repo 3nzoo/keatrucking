@@ -6,7 +6,7 @@ module.exports = {
     production: {
       key: 'key.pem',
       user: 'ubuntu',
-      host: 'keatrucking.com',
+      host: '13.213.47.25',
       ref: 'origin/main',
       repo: 'git@github.com:3nzoo/keatrucking.git',
       path: '/home/ubuntu',
