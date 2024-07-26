@@ -2,12 +2,6 @@ import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
 
-// TEMPORARY DATA
-// const users = [
-//   { id: 1, name: "John" },
-//   { id: 2, name: "Jane" },
-// ];
-
 
 export const getPosts = async () => {
   try {
@@ -31,7 +25,6 @@ export const getUserPosts = async () => {
     throw new Error("Failed to fetch posts!");
   }
 };
-
 
 
 //? List down Posts from a Branch/User

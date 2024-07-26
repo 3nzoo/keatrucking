@@ -32,6 +32,9 @@ const userSchema = new mongoose.Schema(
     img: {
       type: String,
     },
+    gmaps: {
+      type: String,
+    },
     incorporate: {
       type: String,
       required: true,
@@ -67,6 +70,7 @@ const postSchema = new mongoose.Schema(
     },
     truck_number: {
       type: String,
+      default: '-',
     },
     item_category: {
       type: String,
@@ -77,6 +81,11 @@ const postSchema = new mongoose.Schema(
     },
     remarks: {
       type: String,
+      default: '-',
+    },
+    distance: {
+      type: String,
+      default: '-',
     },
     username: {
       type: String,
