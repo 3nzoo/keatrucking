@@ -1,37 +1,10 @@
-/* .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wrapper {
-  width: 500px;
-  background-color: var(--bgSoft);
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  gap: 30px;
-  border-radius: 5px;
-}
-
-.head {
-  display: flex;
-  text-align: center;
-  width: 100%;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.section {
-} */
-
 .container {
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
+  background-color: #27364b;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .header {
@@ -39,17 +12,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .header h2 {
   margin: 0;
 }
+
 .section {
-  margin-top: 20px;
+  margin: 35px auto;
 }
-.section h3 {
+.section h2 {
+  color: #87aae4;
   margin-bottom: 10px;
 }
-.section p {
-  margin: 5px 0;
+.section h3 {
+  margin: 10px 0;
+  font-size: 1.5em;
 }
 .buttons {
   display: flex;
@@ -63,9 +40,14 @@
   cursor: pointer;
   margin-bottom: 20px;
 }
-.edit {
-  background-color: #4caf50;
+.back {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: var(--btn);
   color: white;
+  float: right;
+  border-radius: 10px;
+  margin-top: -20px;
 }
 .cancel {
   background-color: #f44336;

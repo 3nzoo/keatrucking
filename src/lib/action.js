@@ -25,13 +25,15 @@ export const addPost = async (prevState, formData) => {
       slug,
       username,
       contact,
+      img: '-',
+      truck_number: '-',
       item_category
     });
 
     await newPost.save();
-    console.log("saved post to db");
-    revalidatePath("/delivery");
-    revalidatePath("/admin");
+    console.log("saved delivery to db");
+    revalidatePath("/");
+    return { success: true };
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };

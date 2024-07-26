@@ -10,15 +10,18 @@ export const authConfig = {
         token.id = user.id;
         token.isAdmin = user.isAdmin;
         token.username = user.username;
+        token.gmaps = user.gmaps;
       }
       return token;
     },
 
     async session({ session, token }) {
       if (token) {
+        console.log(33333, token)
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
-        session.user.username = token.username
+        session.user.username = token.username;
+        session.user.gmaps = token.gmaps;
       }
       return session;
     },
@@ -32,7 +35,6 @@ export const authConfig = {
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
       const isOnHomePage = request.nextUrl?.pathname === "/";
       const slug = request.nextUrl?.pathname.split('/').pop().split('FC-')[0];
-
 
       if (isOnHomePage && user) {
         if (user.isAdmin) {

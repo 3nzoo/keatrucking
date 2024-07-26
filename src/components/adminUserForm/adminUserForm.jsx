@@ -11,8 +11,7 @@ const AdminUserForm = () => {
 
   if (state?.success) {
     setTimeout(() => {
-      router.replace('/'); // Redirect to the home page or any other route
-      // router.push('/');
+      router.replace('/');
     }, 1500);
   }
 
