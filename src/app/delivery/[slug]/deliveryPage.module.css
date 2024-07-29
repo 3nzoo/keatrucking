@@ -13,8 +13,17 @@
   align-items: center;
 }
 
+.header a {
+  margin-top: 10px;
+}
+
 .header h2 {
   margin: 0;
+}
+
+.header h1 {
+  font-size: 1.7em;
+  margin-top: 0px;
 }
 
 .section {
@@ -22,16 +31,16 @@
 }
 .section h2 {
   color: #87aae4;
+  font-size: 1.3em;
   margin-bottom: 10px;
 }
 .section h3 {
   margin: 10px 0;
-  font-size: 1.5em;
+  font-size: 1.1em;
 }
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 }
 .buttons button {
   padding: 10px 20px;

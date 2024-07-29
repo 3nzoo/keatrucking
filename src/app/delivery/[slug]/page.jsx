@@ -16,11 +16,11 @@ const DeliveryPage = async ({ params }) => {
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.buttons}>
-            <div></div>
+            <h1>Delivery Details</h1>
           </div>
-          {/* <button className={styles.edit}>Edit Details</button> */}
-          {/* <button onclick='window.history.back()'>← Back</button> */}
-          <h1>Delivery Details</h1>
+          <Link className={styles.back} href={'/'}>
+            Back
+          </Link>
         </div>
         <div className={styles.section}>
           <h2>Name: </h2>
@@ -57,9 +57,6 @@ const DeliveryPage = async ({ params }) => {
         <div className={styles.section}>
           <h2>Delivery Proof:</h2>
           <h3>- {post.img} </h3>
-          <Link className={styles.back} href={'/'}>
-            Back
-          </Link>
         </div>
       </div>
     </div>

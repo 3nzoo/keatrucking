@@ -10,8 +10,6 @@ const AdminPostForm = ({ branchName }) => {
   const router = useRouter();
   const now = new Date();
 
-  console.log(222222, branchName);
-
   // Extract and format each part of the date and time
   const year = String(now.getFullYear()).slice(2); // Last two digits of the year
   const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
@@ -29,8 +27,17 @@ const AdminPostForm = ({ branchName }) => {
     }, 1500);
   }
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <form action={formAction} className={styles.container}>
+      <div className={styles.header}>
+        <button className={styles.back} onClick={handleBack}>
+          BACK
+        </button>
+      </div>
       <h1>Add New Delivery</h1>
       <input type='hidden' name='username' value={branchName} />
       <input
@@ -43,6 +50,9 @@ const AdminPostForm = ({ branchName }) => {
       <input type='text' name='contact' placeholder='Contact Number' />
       <input type='text' name='item_category' placeholder='Category' />
       <button>Add</button>
+      <button className={styles.close} onClick={handleBack}>
+        Cancel
+      </button>
       {state?.success && <h2>New Delivery Added</h2>}
       {state?.error}
     </form>

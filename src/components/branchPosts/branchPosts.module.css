@@ -41,13 +41,25 @@
   padding: 10px;
 }
 
+.tableContainer tr:hover {
+  background: #d0d2d6;
+  color: #000;
+}
+
 .tableContainer a {
-  color: gray;
-  border-radius: 20px;
-  padding: 10px;
-  background: white;
+  padding: 10px 20px;
+  display: block;
 }
 
 .tableContainer a:hover {
   background: #d0d2d6;
+}
+
+.even {
+  background-color: #233b5b;
+}
+
+.tableContainer .action:hover {
+  background-color: var(--bg);
+  color: white;
 }
