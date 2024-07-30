@@ -62,3 +62,15 @@
 .header {
   margin-bottom: 30px;
 }
+
+.maps {
+  width: 50%;
+  padding: 10px 20px;
+  background: var(--btn);
+  border-radius: 10px;
+}
+
+.maps:hover {
+  cursor: pointer;
+  background: var(--bg);
+}
