@@ -12,7 +12,7 @@ const BranchPosts = async ({ branchId }) => {
 
       <table className={styles.tableContainer}>
         <thead>
-          <tr>
+          <tr className={styles.action}>
             <th>Select</th>
             <th>Name</th>
             <th>Address</th>
@@ -20,26 +20,45 @@ const BranchPosts = async ({ branchId }) => {
             <th>Item Category</th>
             <th>Status</th>
             <th>Delete</th>
-            <th>Truck Number</th>
+            <th>Truck No.</th>
           </tr>
         </thead>
         <tbody>
-          {posts?.map((post) => {
+          {posts?.map((post, index) => {
             return (
-              <tr key={post.id}>
+              <tr key={post.id} className={index % 2 === 0 ? styles.even : ''}>
                 <td>
                   <Link href={`/delivery/${post.slug}`}>View Details</Link>
                 </td>
-                <td>{post.name}</td>
-                <td>{post.address}</td>
-                <td>{post.contact}</td>
-                <td>{post.item_category}</td>
-                <td>{post.status}</td>
                 <td>
-                  <form action={deletePost}>
-                    <input type='hidden' name='id' value={post.id} />
-                    <button className={styles.postButton}>Cancel</button>
-                  </form>
+                  <Link href={`/delivery/${post.slug}`}>{post.name}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.address}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.contact}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>
+                    {post.item_category}
+                  </Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.status}</Link>
+                </td>
+                <td>
+                  {post.status === 'New' && (
+                    <form action={deletePost}>
+                      <input type='hidden' name='id' value={post.id} />
+                      <button className={styles.postButton}>Cancel</button>
+                    </form>
+                  )}
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>
+                    {post.truck_number}
+                  </Link>
                 </td>
               </tr>
             );

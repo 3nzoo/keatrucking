@@ -48,16 +48,15 @@
 }
 
 .header .back {
-  background: #e7e7e7;
-  color: gray;
+  background: var(--btn);
   float: right;
   padding: 12px;
   font-size: 12px;
 }
 
 .header .back:hover {
-  background: #ff5733;
-  color: white;
+  background: var(--textSoft);
+  color: #000;
 }
 
 .header {

@@ -7,31 +7,48 @@ const DeliveriesList = async ({ posts, username }) => {
   return (
     <div className={styles.container}>
       <h1>
-        Deliveries List <strong> {username.toUpperCase()}</strong>
+        Delivery List <strong> {username.toUpperCase()}</strong>
       </h1>
 
       <table className={styles.tableContainer}>
         <thead>
-          <tr>
+          <tr className={styles.action}>
             <th>Action</th>
             <th>Name</th>
             <th>Address</th>
             <th>Contact</th>
             <th>Status</th>
             <th>Truck Number</th>
+            <th>Distance {`(km)`}</th>
           </tr>
         </thead>
         <tbody>
-          {posts?.map((post) => {
+          {posts?.map((post, index) => {
             return (
-              <tr key={post.id}>
+              <tr key={post.id} className={index % 2 === 0 ? styles.even : ''}>
                 <td>
                   <Link href={`/delivery/${post.slug}`}>View Details</Link>
                 </td>
-                <td>{post.name}</td>
-                <td>{post.address}</td>
-                <td>{post.contact}</td>
-                <td>{post.status}</td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.name}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.address}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.contact}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.status}</Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>
+                    {post.truck_number}
+                  </Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.distance}</Link>
+                </td>
               </tr>
             );
           })}

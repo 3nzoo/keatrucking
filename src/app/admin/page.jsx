@@ -26,7 +26,7 @@ const AdminPage = async () => {
 
       <div className={styles.row}>
         <div className={styles.colHeader}>
-          <Link href={'/admin/branch/new'}>add Branch</Link>
+          <Link href={'/admin/branch/new'}>Add Branch</Link>
         </div>
         {/* <Link href={'/admin/branch/new'}>add Branch</Link> */}
         <div className={styles.col}>

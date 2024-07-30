@@ -4,13 +4,13 @@ import { addPost } from '@/lib/action';
 import styles from './adminPostForm.module.css';
 import { useFormState } from 'react-dom';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-const AdminPostForm = ({ branchName }) => {
+const AdminPostForm = ({ branchName, gmaps }) => {
   const [state, formAction] = useFormState(addPost, undefined);
   const router = useRouter();
   const now = new Date();
-
-  console.log(222222, branchName);
+  const maps = gmaps ? gmaps : 'http://maps.google.com';
 
   // Extract and format each part of the date and time
   const year = String(now.getFullYear()).slice(2); // Last two digits of the year
@@ -29,9 +29,15 @@ const AdminPostForm = ({ branchName }) => {
     }, 1500);
   }
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <form action={formAction} className={styles.container}>
-      <h1>Add New Delivery</h1>
+      <div className={styles.header}>
+        <h1>Add New Delivery</h1>
+      </div>
       <input type='hidden' name='username' value={branchName} />
       <input
         type='hidden'
@@ -39,10 +45,19 @@ const AdminPostForm = ({ branchName }) => {
         value={branchName + 'FC-' + formattedDateTime}
       />
       <input type='text' name='name' placeholder='Name' />
-      <textarea type='text' name='address' placeholder='address' rows={10} />
       <input type='text' name='contact' placeholder='Contact Number' />
       <input type='text' name='item_category' placeholder='Category' />
-      <button>Add</button>
+      <textarea type='text' name='address' placeholder='address' rows={10} />
+
+      <input type='text' name='distance' placeholder='Distance from Branch' />
+      <Link className={styles.maps} href={`${maps}`} target='_blank'>
+        Check Distance
+      </Link>
+
+      <button className={styles.add}>Add</button>
+      <button className={styles.close} onClick={handleBack}>
+        Cancel
+      </button>
       {state?.success && <h2>New Delivery Added</h2>}
       {state?.error}
     </form>

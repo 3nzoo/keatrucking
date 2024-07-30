@@ -28,3 +28,49 @@
   color: var(--textColor);
   font-weight: bold;
 }
+
+.container .close {
+  background: #e7e7e7;
+  color: gray;
+}
+
+.container .close:hover {
+  background: #ff5733;
+  color: white;
+}
+
+.container .add {
+  margin-top: 20px;
+}
+
+.container .add:hover {
+  background: #6495ed;
+}
+
+.header .back {
+  background: var(--btn);
+  float: right;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.header .back:hover {
+  background: var(--textSoft);
+  color: #000;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.maps {
+  width: 50%;
+  padding: 10px 20px;
+  background: var(--btn);
+  border-radius: 10px;
+}
+
+.maps:hover {
+  cursor: pointer;
+  background: var(--bg);
+}

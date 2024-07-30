@@ -15,7 +15,7 @@ const AdminUsers = async () => {
 
       <table className={styles.tableContainer}>
         <thead>
-          <tr>
+          <tr className={styles.action}>
             <th>username</th>
             <th>name</th>
             <th>City</th>
@@ -25,15 +25,50 @@ const AdminUsers = async () => {
           </tr>
         </thead>
         <tbody>
-          {users?.map((user) => {
+          {users?.map((user, index) => {
             // const curDate = new Date(user.createdAt);
             return (
-              <tr key={user.id}>
-                <td>{user.username}</td>
-                <td>{user.name}</td>
-                <td>{user.city}</td>
-                <td>{user.contact}</td>
-                <td>{user.incorporate}</td>
+              <tr key={user.id} className={index % 2 === 0 ? styles.even : ''}>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/admin/branch/${user.username}`}
+                  >
+                    {user.username}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/admin/branch/${user.username}`}
+                  >
+                    {user.name}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/admin/branch/${user.username}`}
+                  >
+                    {user.city}{' '}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/admin/branch/${user.username}`}
+                  >
+                    {user.contact}{' '}
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    className={styles.LinkBtn}
+                    href={`/admin/branch/${user.username}`}
+                  >
+                    {user.incorporate}{' '}
+                  </Link>
+                </td>
                 <td>
                   <Link
                     className={styles.LinkBtn}
