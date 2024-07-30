@@ -14,7 +14,7 @@ export const addPost = async (prevState, formData) => {
   // ?truck number, username, item_category, name ,address
   // ? contact, status, lastUpdate, image_link
 
-  const { name, address, slug, username, contact, item_category, } = Object.fromEntries(formData);
+  const { name, address, slug, username, contact, item_category, distance } = Object.fromEntries(formData);
 
   try {
     connectToDb();
@@ -27,7 +27,8 @@ export const addPost = async (prevState, formData) => {
       contact,
       img: '-',
       truck_number: '-',
-      item_category
+      item_category,
+      distance
     });
 
     await newPost.save();

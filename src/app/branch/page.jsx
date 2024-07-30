@@ -16,7 +16,7 @@ const BranchPage = async () => {
         <h2>
           Hi <strong>{session?.user?.username?.toUpperCase()}</strong>
         </h2>
-        <Link href={'/branch/newDelivery'}>new Delivery</Link>
+        <Link href={'/branch/newDelivery'}>New Delivery</Link>
       </div>
       <div className={styles.row}>
         <div className={styles.col}>

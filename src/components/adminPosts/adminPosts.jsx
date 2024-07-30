@@ -72,7 +72,8 @@ const AdminPosts = async () => {
                     className={styles.LinkBtn}
                     href={`/delivery/${post.slug}`}
                   >
-                    {post.distance}{' '}
+                    {post.distance}
+                    {post.distance > 0 ? ' km' : ''}
                   </Link>
                 </td>
                 <td>

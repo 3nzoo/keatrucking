@@ -1,5 +1,6 @@
 import { getUserBySlug } from '@/lib/data';
 import styles from './adminUsers.module.css';
+import Link from 'next/link';
 
 // ! convert into table with click open page[slug] button
 
@@ -16,6 +17,7 @@ const AdminUser = async (user) => {
             <th>CITY</th>
             <th>CONTACT</th>
             <th>COMPANY</th>
+            <th>COORDINATES</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +27,19 @@ const AdminUser = async (user) => {
             <td>{user.username.city}</td>
             <td>{user.username.contact}</td>
             <td>{user.username.incorporate}</td>
+            <td>
+              {user.username.gmaps ? (
+                <Link
+                  className={styles.LinkBtn}
+                  href={`${user.username.gmaps}`}
+                  target='_blank'
+                >
+                  Check Map
+                </Link>
+              ) : (
+                <p>-</p>
+              )}
+            </td>
           </tr>
         </tbody>
       </table>

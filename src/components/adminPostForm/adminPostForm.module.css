@@ -40,7 +40,7 @@
 }
 
 .container .add {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .container .add:hover {
@@ -60,5 +60,17 @@
 }
 
 .header {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+.maps {
+  width: 50%;
+  padding: 10px 20px;
+  background: var(--btn);
+  border-radius: 10px;
+}
+
+.maps:hover {
+  cursor: pointer;
+  background: var(--bg);
 }

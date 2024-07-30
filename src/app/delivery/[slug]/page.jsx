@@ -43,16 +43,19 @@ const DeliveryPage = async ({ params }) => {
           <h3>- {post.item_category} </h3>
         </div>
         <div className={styles.section}>
+          <h2>Distance:</h2>
+          <h3>
+            {' '}
+            - {post?.distance} {post?.distance > 0 ? 'km' : ''}
+          </h3>
+        </div>
+        <div className={styles.section}>
           <h2>Truck Number:</h2>
           <h3>- {post.truck_number} </h3>
         </div>
         <div className={styles.section}>
           <h2>Remarks:</h2>
           <h3> - {post?.remarks}</h3>
-        </div>
-        <div className={styles.section}>
-          <h2>Distance:</h2>
-          <h3> - {post?.distance}</h3>
         </div>
         <div className={styles.section}>
           <h2>Delivery Proof:</h2>

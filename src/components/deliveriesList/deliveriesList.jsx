@@ -19,6 +19,7 @@ const DeliveriesList = async ({ posts, username }) => {
             <th>Contact</th>
             <th>Status</th>
             <th>Truck Number</th>
+            <th>Distance {`(km)`}</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,9 @@ const DeliveriesList = async ({ posts, username }) => {
                   <Link href={`/delivery/${post.slug}`}>
                     {post.truck_number}
                   </Link>
+                </td>
+                <td>
+                  <Link href={`/delivery/${post.slug}`}>{post.distance}</Link>
                 </td>
               </tr>
             );
