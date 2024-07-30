@@ -67,7 +67,7 @@ export const deletePost = async (formData) => {
 
 export const addUser = async (prevState, formDataValues) => {
 
-  const { username, name, password, city, contact, incorporate, } = Object.fromEntries(formDataValues);
+  const { username, name, password, city, contact, incorporate, gmaps } = Object.fromEntries(formDataValues);
 
   try {
     await connectToDb();
@@ -83,6 +83,7 @@ export const addUser = async (prevState, formDataValues) => {
       branchName: username + 'FC',
       incorporate,
       password: hashedPassword,
+      gmaps
     });
 
     await newUser.save();

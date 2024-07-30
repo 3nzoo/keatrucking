@@ -4,6 +4,7 @@ import { addUser } from '@/lib/action';
 import styles from './adminUserForm.module.css';
 import { useFormState } from 'react-dom';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const AdminUserForm = () => {
   const [state, formAction] = useFormState(addUser, undefined);
@@ -33,6 +34,15 @@ const AdminUserForm = () => {
       <input type='text' name='city' placeholder='City' />
       <input type='text' name='contact' placeholder='Contact Number' />
       <input type='text' name='incorporate' placeholder='Incorporate Company' />
+      <input type='text' name='gmaps' placeholder='Google Maps Link' />
+      <Link
+        className={styles.maps}
+        href={`http://maps.google.com`}
+        target='_blank'
+      >
+        Google Maps
+      </Link>
+
       {/* <input type='text' name='img' placeholder='img' /> */}
       {/* <select name='isAdmin'>
         <option value='false'>Is Admin?</option>
