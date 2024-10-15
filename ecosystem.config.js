@@ -4,9 +4,9 @@ module.exports = {
   }],
   deploy: {
     production: {
-      key: 'key.pem',
+      key: 'key3.pem',
       user: 'ubuntu',
-      host: '13.213.47.25',
+      host: '107.22.15.19',
       ref: 'origin/main',
       repo: 'git@github.com:3nzoo/keatrucking.git',
       path: '/home/ubuntu',
